@@ -23,8 +23,8 @@ jobs:
     - name: Build
       run: |
         echo "pwd" && pwd
-        echo "content of pwd" && ls -lth src
-        cd ./src/k8s.io/kube-openapi
+        echo "content of pwd" && ls -lth src/k8s.io
+        cd /home/runner/work/kube-openapi/kube-openapi/src/k8s.io/kube-openapi
         go mod tidy && git diff --exit-code
         go build ./cmd/... ./pkg/...
 
