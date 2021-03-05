@@ -33,4 +33,6 @@ jobs:
       run: |
         cd /home/runner/work/kube-openapi/kube-openapi/src/k8s.io/
         echo "GITHUB_WORKSPACE = ${GITHUB_WORKSPACE}"
+        echo "GOPATH = $GOPATH"
+        echo "checking GITHUB_WORKSPACE" && ls -l $GITHUB_WORKSPACE
         GOPATH=${GITHUB_WORKSPACE} go test ./cmd/... ./pkg/... ./test/...
