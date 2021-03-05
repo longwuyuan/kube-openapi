@@ -32,6 +32,7 @@ jobs:
     - name: Test
       run: |
         cd /home/runner/work/kube-openapi/kube-openapi/src/k8s.io/
+        ln -s ../k8s.io kube-openapi && ls -lth
         echo "GITHUB_WORKSPACE = ${GITHUB_WORKSPACE}"
         echo "GOPATH = $GOPATH"
         echo "checking GITHUB_WORKSPACE" && ls -l $GITHUB_WORKSPACE
