@@ -25,8 +25,11 @@ jobs:
         echo "pwd" && pwd
         echo "content of pwd"
         ls -lth
+        cd src/k8s.io/kube-openapi/
         go mod tidy && git diff --exit-code
         go build ./cmd/... ./pkg/...
 
     - name: Test
-      run: cd src/k8s.io/kube-openapi/ && GOPATH=GOPATH=${GITHUB_WORKSPACE} go test ./cmd/... ./pkg/... ./test/...
+      run: |
+      cd src/k8s.io/kube-openapi/
+      GOPATH=GOPATH=${GITHUB_WORKSPACE} go test ./cmd/... ./pkg/... ./test/...
