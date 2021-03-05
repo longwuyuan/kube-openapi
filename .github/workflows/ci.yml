@@ -2,7 +2,7 @@ name: ci-pipeline
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, issue-225 ]
   pull_request:
     branches: [ master ]
 
@@ -12,11 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with :
+        path: src/k8s.io/
 
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
-        go-version: '^1.14'
+        go-version: '1.16'
 
     - name: Build
       run: |
@@ -24,4 +26,4 @@ jobs:
         go build ./cmd/... ./pkg/...
 
     - name: Test
-      run: GOPATH=/home/runner/go go test ./cmd/... ./pkg/... ./test/...
+      run: cd src/k8s.io/kube-openapi/ && GOPATH=GOPATH=${GITHUB_WORKSPACE} go test ./cmd/... ./pkg/... ./test/...
