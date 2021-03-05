@@ -25,6 +25,6 @@ jobs:
 
     - name: Test
       run: |
-        ln -s ../k8s.io kube-openapi && ls -lth
+        pwd && ls -lth
         pwd && ls -l
-        GOPATH=/home/runner/go go test ./cmd/... ./pkg/... ./test/...
+        GO111MODULES=on GOPATH=/home/runner/go go test ./cmd/... ./pkg/... ./test/...
