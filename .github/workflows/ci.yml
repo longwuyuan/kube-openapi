@@ -13,8 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        env:
-          path: src/k8s.io/kube-openapi/        
+        path: src/k8s.io/kube-openapi/        
 
     - name: Set up Go
       uses: actions/setup-go@v2591a79e591a79e
